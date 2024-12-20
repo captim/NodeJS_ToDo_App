@@ -5,7 +5,7 @@ export default class TaskModel extends Model<Task> implements Task {
     public id!: number;
     public name!: string;
     public description!: string;
-    public deadline!: Date;
+    public deadline?: Date;
 
     static initialize(sequelize: Sequelize): void {
         TaskModel.init(
