@@ -18,7 +18,7 @@ const sequelize: Sequelize = new Sequelize('node_todo_app_scheme', 'root', 'root
 TaskModel.initialize(sequelize);
 
 sequelize
-    .sync(/**{ alter: true } */)
+    .sync({ alter: true })
     .then(() => {
     	console.log("Sequelize Initialised!!");
         app.listen(PORT, () => {
