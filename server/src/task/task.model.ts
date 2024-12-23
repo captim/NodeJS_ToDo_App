@@ -4,7 +4,7 @@ import { Task } from './task.interface';
 export default class TaskModel extends Model<Task> implements Task {
     public id!: number;
     public name!: string;
-    public description!: string;
+    public isCompleted!: boolean;
 
     static initialize(sequelize: Sequelize): void {
         TaskModel.init(
@@ -19,8 +19,8 @@ export default class TaskModel extends Model<Task> implements Task {
                     type: DataTypes.STRING,
                     allowNull: false,
                 },
-                description: {
-                    type: DataTypes.STRING,
+                isCompleted: {
+                    type: DataTypes.BOOLEAN,
                     allowNull: false,
                 },
             },
