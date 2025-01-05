@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./taskListItem.css";
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Checkbox from '@mui/material/Checkbox';
+import './taskListItem.css';
 
 interface TaskListItemProps {
     id: number;
@@ -23,13 +24,10 @@ const TaskListItem: React.FC<TaskListItemProps> = ({
     };
 
     return (
-        <ListItem className="task">
-            <input
-                type="checkbox"
-                checked={isCompletedState}
-                onClick={handleCheckbox}
-            />
-            <ListItemText primary={name} />
+        <ListItem className="task" onClick={handleCheckbox}>
+            <Checkbox checked={isCompletedState}/>
+            <ListItemText primary={name} className={"task-name " + (isCompletedState ? "strikethrough" : "")} 
+                onClick={handleCheckbox}/>
         </ListItem>
     );
 };

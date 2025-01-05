@@ -1,0 +1,11 @@
+.strikethrough  {
+    text-decoration:line-through;
+}
+
+.task-name {
+    cursor: pointer;
+}
+
+.task:hover {
+    background-color: #eee;
+}

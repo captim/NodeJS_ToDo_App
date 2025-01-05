@@ -1,5 +1,18 @@
 .main-container {
     padding: 10px;
-    width: 480px;
-    height: 320px;
+    width: 760px;
+    min-height: 520px;
+}
+
+.name {
+    display: flex;
+    width: 50%;
+    padding-left: 25%;
+    padding-right: 25%;
+    justify-content: space-evenly;
+}
+.fab-add-button-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row-reverse;
 }

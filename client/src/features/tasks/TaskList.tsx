@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { taskService, Task } from "../../services/taskService";
+import React from "react";
+import { taskService } from "../../services/taskService";
+import { useTasks } from "../../context/TaskContext";
 import TaskListItem from "./TaskListItem";
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import "./taskList.css";
-import "../../assets/fonts/mainFonts.css";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import './taskList.css';
 const TaskList: React.FC = () => {
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const { tasks } = useTasks();
 
-    useEffect(() => {
-        const fetchTasks = async () => {
-            const fetchedTasks = await taskService.getTasks();
-            setTasks(fetchedTasks);
-        };
-
-        fetchTasks();
-    }, []);
 
     const onCheckboxChange = async (id: number, isCompleted: boolean) => {
         try {
@@ -29,8 +17,9 @@ const TaskList: React.FC = () => {
         }
     };
     return (
-        <List>
-            {tasks.map((task) => (
+        <div className="task-list-container">
+            <List className="task-list">
+            {tasks.map((task, index) => (
                 <>
                     <TaskListItem
                         key={task.id}
@@ -39,10 +28,11 @@ const TaskList: React.FC = () => {
                         isCompleted={task.isCompleted}
                         onCheckboxChange={onCheckboxChange}
                     />
-                    <Divider/>
+                    {index != tasks.length - 1 ? <Divider/> : ""}
                 </>
             ))}
         </List>
+        </div>
     );
 };
 
