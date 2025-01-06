@@ -4,6 +4,7 @@ import { taskService, Task } from "../services/taskService";
 interface TaskContextProps {
     tasks: Task[];
     addTask: (task: Task) => void;
+    removeTask: (task: Task) => void;
     fetchTasks: () => Promise<void>;
 }
 
@@ -22,7 +23,16 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const addTask = (task: Task) => {
+        taskService.createTask(task);
         setTasks((prevTasks) => [...prevTasks, task]);
+    };
+
+    const removeTask = (task: Task) => {
+        if (!task.id) {
+            console.error("Failed to delete tasks: task id is empty");
+        }
+        taskService.deleteTask(task.id as number);
+        setTasks((prevTasks) => prevTasks.filter((item) => item.id !== task.id));
     };
 
     useEffect(() => {
@@ -30,7 +40,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, []);
 
     return (
-        <TaskContext.Provider value={{ tasks, addTask, fetchTasks }}>
+        <TaskContext.Provider value={{ tasks, addTask, removeTask, fetchTasks }}>
             {children}
         </TaskContext.Provider>
     );

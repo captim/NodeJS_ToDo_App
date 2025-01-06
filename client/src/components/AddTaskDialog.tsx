@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { taskService, Task } from '../services/taskService';
+import { Task } from '../services/taskService';
 import { useTasks } from "../context/TaskContext";
 
 interface AddTaskDialogProps {
@@ -23,7 +23,6 @@ const AddTaskDialog: React.FC<AddTaskDialogProps> = ({
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData).entries());
         const task: Task = {name: formJson.name as string, isCompleted: false};
-        taskService.createTask(task)
         addTask(task);
         handleClose();
       };

@@ -23,9 +23,7 @@ const TaskList: React.FC = () => {
                 <>
                     <TaskListItem
                         key={task.id}
-                        id={task.id!}
-                        name={task.name}
-                        isCompleted={task.isCompleted}
+                        task={task}
                         onCheckboxChange={onCheckboxChange}
                     />
                     {index != tasks.length - 1 ? <Divider/> : ""}

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-// URL вашего API
-const BASE_URL = 'http://localhost:3000/task';
-
+const BASE_URL = (process.env.REACT_APP_API_URL || 'http://localhost:3000/') + 'task';
 export interface Task {
   id?: number;
   name: string;
