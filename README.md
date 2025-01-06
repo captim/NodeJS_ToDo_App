@@ -43,8 +43,10 @@ A simple and efficient ToDo application built with React (TypeScript) for the fr
 ```bash
 git clone https://github.com/captim/NodeJS_ToDo_App
 cd todo-app
-Install dependencies for the server and client:
 ```
+
+2. Install dependencies for the server and client:
+
 For the server:
 ```
 cd server
@@ -57,7 +59,7 @@ cd client
 npm install
 ```
 
-Set up environment variables for the server:
+3. Set up environment variables for the server:
 
 Create a .env file in the server directory with the following configuration:
 ```
@@ -72,7 +74,7 @@ Create a .env file in the client directory with the following configuration:
 ```
 REACT_APP_API_URL=http://localhost:3000/
 ```
-Run the application:
+4. Run the application:
 
 In one terminal window, run the server:
 ```
